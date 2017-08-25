@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+   .box{
+       display: flex;  
+             align-items:stretch;
+       flex-direction:row;
+        height: 100px;  
+  
+   }
+   
+   .item{
+      height: 100%;
+      width: 100px;
+      min-width : 100px;
+     /*  min-width : 줄어들다가 100px되면 멈춰 ! */
+     flex-grow: 1;
+   }
+   
+   .item:nth-child(1){
+      background: red;
+      flex-grow: 2; 
+     /*   flex-grow :: 2배로 만들자 */
+   }
+   .item:nth-child(2){
+      background: green;
+ 
+   }
+      .item:nth-child(3){
+      background: yellow;
+    /*   flex-grow:1; */
+     /*  만약에 딴거 다 그대로 놔두고 3번째꺼만 flex-grow:1로 쓰면
+      그것만 나머지 공간 다 차지함. */
+   }
+       .item:nth-child(4){
+      background: black;
+   }
+   
+</style>
+</head>
+<body>
+   <div class="box">
+      <a class="item">1</a>
+      <a class="item">2</a>
+      <a class="item">3</a>
+       <a class="item">4</a>
+    
+   </div>
+</body>
+</html>

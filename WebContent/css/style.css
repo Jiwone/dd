@@ -1,0 +1,287 @@
+@charset "EUC-KR";
+
+a{
+   color: #979797;
+   text-decoration: none;
+}
+
+a:hover{
+   text-decoration: underline;
+}
+
+/* -------------------------------------------------- */
+
+.hidden{
+   display: none;
+}
+
+/* main의 막내동생 */
+ 
+.clearfix::after {
+   content: "";
+   clear: left;
+   display: block;
+   clear: both;
+    display : block;
+} 
+
+body{
+   font-family: 돋움, Arial, sans-serif;
+   font-size: 11px;
+   color: #979797;
+}
+
+/* ------------button--------------------------------- */
+.btn{
+      display : inline-block;
+   border : 0px;
+      cursor : pointer;
+      overflow: hidden;
+      
+      background-image: none;
+   border: 1px solid transparent;
+   border-radius: 4px;
+   
+   padding: 3px 8px;
+   color: #ffffff;
+   font-weight: bold;
+}
+
+.btn-img{
+   display:inline-block;
+   border : 0px;
+   cusor : pointer;
+   overflow:hidden;
+   
+   background-image:none;
+   border:1px solid transparent;
+   
+   text-indent:-999px;
+}
+
+.btn-search{
+   width : 31px;
+      height : 25px;
+      background: url("../images/btn-zoom.png") no-repeat center ;
+      border-left : 1px solid #8CBA34;
+}
+
+.btn-cancel{
+   width :64px;
+   height: 25px;
+   background: url("../images/btn-cancel.png") no-repeat center;
+   border-left: 1px solid #8CBA34;
+}
+
+.btn-default{
+   background: #8fb885;
+   background:-webkit-radial-gradient(center, ellipse cover, #9dcf40 0%,#698c26 100%);
+}
+
+.btn-default:hover{
+   text-decoration: none;
+   
+   background: #ff8040;
+   border-color: #ff8040;
+}
+/* ------------list---------------------------- */
+
+.hr-list{
+   display: inline-block;
+}
+
+   .hr-list ul{
+      overflow: auto;
+   }
+   
+   .hr-list li{
+      float: left;
+   }
+      
+   .hr-list li:first-child{
+      padding-left: 0px;
+      background: none;
+   }
+   
+/* ---------------header------------------------------------ */
+
+#header {
+   height: 70px;
+}
+
+
+#header > .content-container 
+{
+   position: relative;
+}
+
+#header > .content-container > section > *, 
+#logo{
+   position: absolute;
+}
+   
+   #logo{
+      background: red;
+      display: inline-block;   
+      left : 0px;
+      top : 23px;
+   }
+   
+   #logo img{
+   vertical-align : middle;
+   }
+#main-menu{
+	display : inline-block;
+	left:200px;
+	top:27px;
+	
+}
+	
+.main-menu li{
+   float: left;
+   padding-left: 24px;
+   background: url("../images/bg-main-menu-vsp.png") no-repeat 13px center;
+}
+      
+   .main-menu a{
+      font-family: 맑은 고딕, 고딕, sans-selif;
+      font-size: 15px;
+      font-weight: bold;
+      color: #000000;
+   }
+      
+   .main-menu li:last-child > a{
+      color: #ff6a00;
+   }
+   
+#search-form{
+   width: 308px;
+   height: 25px;
+   border: 5px solid #80ff80;
+   padding-left :900px;
+   top :21px;
+}
+.member-menu{
+	right : 0px;
+	top:20px;
+}
+
+.member-menu li{
+   float: left;
+   padding-left: 9px;
+   background: url("../images/bg-member-menu-sp.png") no-repeat 4px center;
+}
+   
+   .member-menu a{
+      font-family: 맑은 고딕, 고딕, sans-selif;
+      font-size: 10px;
+      font-weight: bold;
+      color: #979797;
+   }
+   
+   #customer-menu{
+   right : 0px;
+   top :40px;
+   }
+
+.content-container {
+   min-height: inherit;
+   height: 100%;
+   width: 960px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+#visual {
+   border-top: solid 5px #8cba34;
+   /* border : 경계선넣기 */
+   height: 171px;
+   background: #313131 url("../images/bg-visual.png") no-repeat center;
+}
+
+#visual .content-container {
+   background: #313131 url("../images/customer/visual.png") no-repeat
+      center;
+}
+/*-----------------body style--------------------------*/
+#body {
+   min-height: 300px;
+   border-top: solid 5px #8cba34;
+   margin-top: 1px;
+   /*   background: rgb(0, 84, 255); */
+}
+
+#aside{
+   float:left;
+   min-height:inherit;
+   width: 205px;
+   height: 300px;
+   overflow: auto;
+   background: url("../images/bg-aside-title.png") no-repeat left top;
+   /* background-size: cover; */
+   background-attachment: local;
+}
+
+#main {
+   float: left;
+   min-height: inherit;
+   padding-left: 35px;
+   padding-top: 45px;
+   width: 755px;
+   box-sizing: border-box;
+   /* background : yellow; */
+}
+
+/*-----------------------------------------------------*/
+#footer {
+   height: 100px;
+   background: #313131;
+}
+
+#floating {
+   /*  position:absolute;  */
+   /*  position : fixed;   */
+   position: relative;
+   /* fixed하면 스크롤 내려도 그대로 유지 */
+   /*  position을 따로 지정 안해주면 left, top안먹음 */
+   /* relative : 상대경로 */
+   width: 50%;
+   height: 100px;
+   /* background : pink; */
+   left: 10px;
+   /*  top : 0px; 위는 얼만큼 ? */
+   bottom: 10px;
+   /*    right: 100px;  */
+}
+
+#floating>div {
+   position: absolute;
+   left: 0px;
+   top: -50px;
+   width: 100px;
+   height: 100px;
+   /* background : blue; */
+}
+/*  #main-menu {
+   color: red;
+}
+ */
+/* nav>.uh {
+   color: green;
+   text-decoration: underline;
+}
+
+#main-menu li.first + li + li {
+   color: red;
+   text-decoration: underline;
+}
+
+#h2 {color : green; }
+h1 {color : orange; }
+
+.h1 {color : red; }
+
+h1.g2{color:green;}
+nav > .h2{color:orange;}
+.h2 {color:red;}
+ */
