@@ -1,4 +1,4 @@
-package com.newlecture.javaweb.controller.customer;
+package com.newlecture.javaweb.controller.admin.notice;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -21,7 +21,7 @@ import com.newlecture.javaweb.dao.NoticeDao;
 import com.newlecture.javaweb.dao.jdbc.JdbcNoticeDao;
 import com.newlecture.javaweb.entity.Notice;
 
-@WebServlet("/customer/notice-detail")
+@WebServlet("/admin/notice/detail")
 public class NoticeDetailController extends HttpServlet {
    protected void service(
          HttpServletRequest request, 
@@ -38,6 +38,6 @@ public class NoticeDetailController extends HttpServlet {
 
       request.setAttribute("detail", n);
       
-      request.getRequestDispatcher("/WEB-INF/views/customer/notice/detail.jsp").forward(request, response);
+      request.getRequestDispatcher("/WEB-INF/views/admin/notice/detail.jsp").forward(request, response);
    }
 }

@@ -9,13 +9,13 @@
 <title>Insert title here</title>
 <link href="../css/reset.css" type="text/css" rel="stylesheet" />
 <link href="../css/style.css" type="text/css" rel="stylesheet" />
-
 </head>
 <body>
 <!-- 헤더부분 -->
 <!-- jsp action tag -->
 <jsp:include page="../../inc/header.jsp"/>
-
+  
+  
 <!--   비주얼부분 -->
 <jsp:include page="../../customer/inc/visual.jsp"/>
 
@@ -70,36 +70,7 @@
                   type="submit" />
             </form>
          </div>
-         <table class="table">
-         
-         <tr>
-          	<th>제목</th>
-          	<td colspan="3">${ detail.title }</td>
-         </tr>
-         
-          <tr>
-          	<th>작성일</th>
-          		<td colspan="3">${ detail.regDate }</td>
-         </tr>
-         
-          <tr>
-          	<th>작성자</th>
-          		<td>${ detail.writerId }</td>
-            <th>조회수</th>
-          		<td>${ detail.hit }</td>
-         </tr>
-         
-          <tr>
-          	<th>첨부파일</th>
-          	<td colspan="3"></td>
-         </tr>
-         
-          <tr>
-          	<td colspan="4">${ detail.content }</td>
-         </tr>
- 
-         </table>
-       <%--   <table border="1">
+         <table border="1">
             <tr>
                <th>번호</th>
                <th>제목</th>
@@ -109,38 +80,24 @@
             </tr>
             <c:forEach var="n" items="${list}">
                <tr>
-                  <td>${ detail.id } </td>
-                  <td>${ detail.title }</td>
+                  <td><a href = "notice-detail">${ n.id }-${ sessionScope.x }</td>
+                  <td>${ n.title }</td>
                   <td>newlec</td>
-                  <td>${ detail.regDate } </td>
-                  <td> ${ detail.hit }</td>
+                  <td>${ n.regDate }</td>
+                  <td>${ n.hit }</td>
                </tr>
             </c:forEach>
-         </table> --%>
-       
-       <div>
-       	<a href="notice-list" class="btn btn-default">목록</a> 
-       <!--notice-list는 추가옵션이 필요없음 -->
-        <a href="notice-edit?id=${detail.id}" class="btn btn-default">수정</a>
-    <!--     수정할 내용이 담겨있어야 해 --> <!-- 추가옵션이 필요. 뒤에 ?필요  쿼리스트림이라고 함 (옵션값) --> 
-        <a href="notice-del" class="btn btn-default">삭제</a> 
-       
-       </div>
-       
-       
+         </table>
          <span class="btn btn-default" href="">글쓰기</span> 
          <a class="btn btn-img btn-cancel" href="">취소</a> 
          </main>
-         
-       
-         
-         
-         
       </div>
    </div>
 <!-- footer부분
  -->
 <jsp:include page="../../inc/footer.jsp"/>
+
+
 
 </body>
 </html>

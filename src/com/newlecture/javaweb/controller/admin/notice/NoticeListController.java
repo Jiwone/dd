@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +16,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.newlecture.javaweb.dao.NoticeDao;
+import com.newlecture.javaweb.dao.jdbc.JdbcNoticeDao;
 import com.newlecture.javaweb.entity.Notice;
 
-@WebServlet("/admin/notice-list")
+@WebServlet("/admin/notice/list")
 public class NoticeListController extends HttpServlet {
 @Override
 
@@ -27,60 +30,31 @@ protected void service(
 	
 	
 	String _title = request.getParameter("title");
-/*
-	application.setAttribute("x", "어플");
-	session.setAttribute("x", "세션");
-	request.setAttribute("x", "리");
-	pageContext.setAttribute("x", "페이지");*/
+	String _page = request.getParameter("p");
+
+	int page=1; //전달이 안됐을 때 기본값
 	
+	if(_page!=null && !_page.equals(""))
+		page = Integer.parseInt(_page);
+
 	String title=""; //기본값
-	if(_title != null  && !_title.equals("") )
-		title = _title;
+	if( _title != null  && ! _title.equals("") )
+		title =  _title;
 	
 	/* System.out.println(title);*/
 	 
-	  List<Notice> list = null;
+	/*int count = 0;
+	List<Notice> list = null;*/
 	  
-    String url = "jdbc:mysql://211.238.142.247/newlecture?autoReconnect=true&amp;useSSL=false&characterEncoding=UTF-8";
-    String sql = "SELECT * FROM Notice WHERE title like ?";
+	 /*문자열을 인스턴스화해주는 클래스 라이브러리 : class.forName("com.mysql.jdbc.Driver")
+	  * 
+	   NoticeDao noticeDao = "noticedao";
+	   noticedao com.newlecture.webprj.dao.jdbc.JdbcNoticeDao*/
+	
+   NoticeDao noticeDao = new JdbcNoticeDao();
 
-    // Jdbc 드라이버 로드
-    try {
-       Class.forName("com.mysql.jdbc.Driver");
-
-       // 연결 / 인증
-       Connection conn = DriverManager.getConnection(url, "sist", "cclass"); // dclass
-
-       // 실행
-      /* Statement st = conn.createStatement();*/
-       PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
-       st.setString(1, "%"+title+"%");
-      		 // 결과 가져오기
-       ResultSet rs = st.executeQuery();
-
-      list = new ArrayList<>();
-
-       while (rs.next()) {
-          Notice n = new Notice();  
-
-          n.setId(rs.getString("ID"));
-          n.setTitle(rs.getString("TITLE"));
-          n.setContent(rs.getString("CONTENT"));
-
-          list.add(n);
-       }
-
-       rs.close();
-       st.close();
-       conn.close();
-    
-    } catch (ClassNotFoundException e) {
-       e.printStackTrace();
-    } catch (SQLException e) {
-       e.printStackTrace();
-    }
-
-	request.setAttribute("list", list);
+	request.setAttribute("list", noticeDao.getList(page, title));
+	request.setAttribute("count",noticeDao.getCount());
 	//response.sendRedirect("notice.jsp"); //아예 새로 출발
 	request.getRequestDispatcher("/WEB-INF/views/admin/notice/list.jsp").forward(request, response); //이어서 출발
 	//redirect

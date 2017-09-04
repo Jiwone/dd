@@ -7,8 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="../css/reset.css" type="text/css" rel="stylesheet" />
-<link href="../css/style.css" type="text/css" rel="stylesheet" />
+<link href="../../css/reset.css" type="text/css" rel="stylesheet" />
+<link href="../../css/style.css" type="text/css" rel="stylesheet" />
 
 </head>
 <body>
@@ -17,13 +17,13 @@
 <jsp:include page="../../inc/header.jsp"/>
 
 <!--   비주얼부분 -->
-<jsp:include page="../../customer/inc/visual.jsp"/>
+<jsp:include page="../inc/visual.jsp"/>
 
    <div id="body" class="clearfix">
       <div class="content-container">
 
 <!-- aside부분 -->
-<jsp:include page="../../customer/inc/aside.jsp"/>
+<jsp:include page="../inc/aside.jsp"/>
       <!--    <aside id="aside">
 
             <h1>고객센터</h1>
@@ -65,7 +65,7 @@
 
          <div>
             <h3>공지사항 검색 폼</h3>
-            <form action="/customer/notice" method="get">
+            <form action="/admin/notice" method="get">
                <label>검색어</label> <input type="text" name="title" /> <input
                   type="submit" />
             </form>
@@ -119,11 +119,11 @@
          </table> --%>
        
        <div>
-       	<a href="notice-list" class="btn btn-default">목록</a> 
+       	<a href="list" class="btn btn-default">목록</a> 
        <!--notice-list는 추가옵션이 필요없음 -->
-        <a href="notice-edit?id=${detail.id}" class="btn btn-default">수정</a>
+        <a href="edit?id=${detail.id}" class="btn btn-default">수정</a>
     <!--     수정할 내용이 담겨있어야 해 --> <!-- 추가옵션이 필요. 뒤에 ?필요  쿼리스트림이라고 함 (옵션값) --> 
-        <a href="notice-del" class="btn btn-default">삭제</a> 
+        <a href="del" class="btn btn-default">삭제</a> 
        
        </div>
        

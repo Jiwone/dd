@@ -1,4 +1,4 @@
-package com.newlecture.javaweb.controller.customer;
+package com.newlecture.javaweb.controller.member;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -21,23 +21,14 @@ import com.newlecture.javaweb.dao.NoticeDao;
 import com.newlecture.javaweb.dao.jdbc.JdbcNoticeDao;
 import com.newlecture.javaweb.entity.Notice;
 
-@WebServlet("/customer/notice-detail")
-public class NoticeDetailController extends HttpServlet {
+@WebServlet("/member/join")
+public class JoinController extends HttpServlet {
    protected void service(
          HttpServletRequest request, 
          HttpServletResponse response) throws ServletException, IOException {
       
-      String _id = request.getParameter("id");
-      String id = "";
+   
       
-      if(_id != null && !_id.equals(""))
-         id = _id;
-      //model얻어오는 작업
-      NoticeDao dao = new JdbcNoticeDao();
-      Notice n =dao.get(id);
-
-      request.setAttribute("detail", n);
-      
-      request.getRequestDispatcher("/WEB-INF/views/customer/notice/detail.jsp").forward(request, response);
+      request.getRequestDispatcher("/WEB-INF/views/member/join.jsp").forward(request, response);
    }
 }

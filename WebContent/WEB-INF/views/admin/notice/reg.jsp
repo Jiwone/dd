@@ -7,8 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="../css/reset.css" type="text/css" rel="stylesheet" />
-<link href="../css/style.css" type="text/css" rel="stylesheet" />
+<link href="../../css/reset.css" type="text/css" rel="stylesheet" />
+<link href="../../css/style.css" type="text/css" rel="stylesheet" />
 
 </head>
 <body>
@@ -65,37 +65,28 @@
 
          <div>
             <h3>공지사항 검색 폼</h3>
-            <form action="/customer/notice" method="get">
+            <form action="/admin/notice" method="get">
                <label>검색어</label> <input type="text" name="title" /> <input
                   type="submit" />
             </form>
          </div>
-         <table class="table">
+        <!--  form action=notice-list로 하면 현재 페이지와 같은 url이니까 지워도 상관없음 -->
+         <form method="post">
+         	<table class="table">
          
          <tr>
           	<th>제목</th>
-          	<td colspan="3">${ detail.title }</td>
+          	<td colspan="3"> <input name = "title"/> </td>
          </tr>
-         
-          <tr>
-          	<th>작성일</th>
-          		<td colspan="3">${ detail.regDate }</td>
-         </tr>
-         
-          <tr>
-          	<th>작성자</th>
-          		<td>${ detail.writerId }</td>
-            <th>조회수</th>
-          		<td>${ detail.hit }</td>
-         </tr>
-         
+
           <tr>
           	<th>첨부파일</th>
           	<td colspan="3"></td>
          </tr>
          
           <tr>
-          	<td colspan="4">${ detail.content }</td>
+          	<td colspan="4">
+          	<textarea name = "content"></textarea></td>
          </tr>
  
          </table>
@@ -119,23 +110,19 @@
          </table> --%>
        
        <div>
-       	<a href="notice-list" class="btn btn-default">목록</a> 
-       <!--notice-list는 추가옵션이 필요없음 -->
-        <a href="notice-edit?id=${detail.id}" class="btn btn-default">수정</a>
+       
+        <input type="submit" class="btn btn-default" value = "등록"></a>
     <!--     수정할 내용이 담겨있어야 해 --> <!-- 추가옵션이 필요. 뒤에 ?필요  쿼리스트림이라고 함 (옵션값) --> 
-        <a href="notice-del" class="btn btn-default">삭제</a> 
+        <a href="list" class="btn btn-default">취소</a> 
        
        </div>
-       
-       
+         </form>
+       <!-- 
+     
          <span class="btn btn-default" href="">글쓰기</span> 
-         <a class="btn btn-img btn-cancel" href="">취소</a> 
+         <a class="btn btn-img btn-cancel" href="">취소</a>  -->
          </main>
-         
-       
-         
-         
-         
+
       </div>
    </div>
 <!-- footer부분

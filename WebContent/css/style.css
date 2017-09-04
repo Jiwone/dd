@@ -30,11 +30,49 @@ body{
    font-size: 11px;
    color: #979797;
 }
+/* ------------text style--------------------------------- */
+
+.text-left{
+	
+	text-align: left ;
+	/* 
+	text-align: left !important;: 우선순위 높이는 방법.
+	처음엔 center에 먹혀서 left가 안됐음 */
+}
+
+.text-center{
+	
+	text-align: center ;
+	
+}
+.text-right{
+	
+	text-align: right ;
+	
+}
+.text-indent{
+	text-indent: 10px;
+	/* 왼쪽에서 5px정도 떨어짐 */
+	
+}
+
+
+.text-strong{
+	color: orange;
+	font-weight: bold;
+
+}
+
+
+
+
+
+
 
 /* ------------button--------------------------------- */
 .btn{
       display : inline-block;
-   border : 0px;
+      border : 0px;
       cursor : pointer;
       overflow: hidden;
       
@@ -60,7 +98,7 @@ body{
 }
 
 .btn-search{
-   width : 31px;
+   width : 20px;
       height : 25px;
       background: url("../images/btn-zoom.png") no-repeat center ;
       border-left : 1px solid #8CBA34;
@@ -84,7 +122,7 @@ body{
    background: #ff8040;
    border-color: #ff8040;
 }
-/* ------------list---------------------------- */
+/* ------------list 목록스타일---------------------------- */
 
 .hr-list{
    display: inline-block;
@@ -92,17 +130,107 @@ body{
 
    .hr-list ul{
       overflow: auto;
+      display : flex;
+    /*   display : flex를 추가한 후엔 밑에 .hr-list li는 필요없어짐 */
    }
    
-   .hr-list li{
+ /*   .hr-list li{
       float: left;
-   }
-      
-   .hr-list li:first-child{
+    
+   } */
+   /*  hr-list긴 한데 separate된 거, 나뉜것만 == hr-list면서 pad인 것 */
+   .hr-list.pad li:first-child{
       padding-left: 0px;
       background: none;
    }
+ 
+/* ---------------격자형(table) 스타일----------------------------- */    
    
+ .table{
+    display:table;
+   	width : 100%;
+   	border-top: 2px solid #8cba35;
+   table-layout:fixed; 
+        }
+   
+   /* 테이블이 아니면, 만약 div로 했을 때도 tr이라는 클래스로 주면 div class="tr"로 해줄수 있음 */
+.table tr,
+.table .tr{
+	display : table-row; 
+/* 	display : table-row; 이건 div로 했을 경우, 테이블 형태로 바꿔주기 위함. */
+	height : 30px;
+	line-height : 30px;
+	
+} 
+.table tr td,
+.table tr th,
+.table .tr .td,
+.table .tr .th{
+	display : table-cell;
+	border-bottom: 1px solid #e9e9e9;
+	/* 
+	실선은 tr에선 안먹힘 */
+	text-align: center;
+}
+
+.table tr th,
+.table .tr .th{
+	
+	background: #f5f5f5 url("../images/bg-title-sp.png") no-repeat 
+	left center;
+}
+
+
+.table tr td.text-left,
+.table tr th.text-left,
+.table .tr .td.text-left,
+.table .tr .th.text-left
+{	
+	text-align: left ;
+	/* 
+	text-align: left !important;: 우선순위 높이는 방법.
+	처음엔 center에 먹혀서 left가 안됐음 
+	근데 important방법은 별로 좋지 않음 직접 table와서 넣어줘야해 */
+}
+/* ---------------main style-------------------------- */
+/* main안쪽의 스타일로 한정시키고 싶을 때. main .title */
+main .title{
+	
+	overflow : hidden;
+	white-space : nowrap;
+	text-overflow: ellipsis; 
+	/* ellipsis 글씨가 너무 길어서 ...으로 생략 */
+	/* font-weight: bold;
+	color : #000; */
+}
+/* title이 공통분모... title이 main에도 들어갈 수 있고 sub에도 들어갈 수 있음
+main title 일때 이런 내용이 공통분모없이 한번만 적용 main이 적용되고 나서 title이 적용 */
+main .main{
+	font-family: 맑은 고딕, 고딕, sans-serif;
+   font-size: 21px;
+   color: #646464;
+   padding-left: 25px;
+   background: url("../images/icon-main-title.png") no-repeat left center;
+	
+}
+
+/* main이면서 title일때 !!!!! 아래 것만 적용됨.
+<h2 class = "main title"> 이땐 .title이랑 아래의 .main.title이적용 */
+main .sub{
+	
+
+}
+
+main .table .w60{
+	
+	width: 60px;
+	/* min-width : 무조건 60px 딴거에 영향 안받음 */
+}
+main .table .w100{
+	
+	width : 100px;
+}
+
 /* ---------------header------------------------------------ */
 
 #header {
@@ -130,6 +258,9 @@ body{
    #logo img{
    vertical-align : middle;
    }
+   
+
+
 #main-menu{
 	display : inline-block;
 	left:200px;
@@ -154,13 +285,42 @@ body{
       color: #ff6a00;
    }
    
-#search-form{
+   
+   #search-form{
    width: 308px;
-   height: 25px;
-   border: 5px solid #80ff80;
-   padding-left :900px;
+   border: 5px solid #8CBA34;
+   left: 468px;
    top :21px;
+ 
 }
+	#search-form form  {
+	display : flex;
+		}
+	/* 과정검색 글씨 가운데 정렬 방법 1	 */
+	#search-form label  {
+/* 	line-height: 25px; */
+		align-self: center;
+		padding:0px 5px; 
+	/* 	padding :: 상하 0px 좌우5px */
+	
+		}
+	/* flex 수평 정렬방법 --> justify
+	1) flex-start 맨 왼쪽부터
+	2) flex-end 맨 오른쪽
+	3) flex-center 가운데
+	4) space-between 빈공간을 n분의 1로 나누기
+	5) space-around 양쪽에 여백을 가지도록
+	
+	flex 수직 정렬방법  --> align
+	align - content : flex 아이템 :: 자기 안에 들어가는 content
+	align - items 
+	align - self : 자신  = flex자신의 박스 정렬 */
+	#search-form input[type="text"]{
+	border : 0px;
+	flex-grow:1;
+	}		
+
+
 .member-menu{
 	right : 0px;
 	top:20px;
@@ -179,10 +339,18 @@ body{
       color: #979797;
    }
    
-   #customer-menu{
+ .customer-menu{
    right : 0px;
    top :40px;
    }
+
+ .customer-menu li{
+    float: left;
+   padding-left: 9px;
+   }
+
+
+
 
 .content-container {
    min-height: inherit;
